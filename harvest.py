@@ -29,8 +29,10 @@ class MelonType:
             self.is_bestseller = False
         
         self.name = name
-        print(self.name, self.is_bestseller, self.is_seedless,
-              self.color, self.first_harvest, self.code)
+
+        # # Test code
+        # print(self.name, self.is_bestseller, self.is_seedless,
+        #       self.color, self.first_harvest, self.code)
 
         # Fill in the rest
 
@@ -38,11 +40,14 @@ class MelonType:
         """Add a food pairing to the instance's pairings list."""
 
         # Fill in the rest
+        self.pairings.append(pairing)
+        # print(self.pairings)
 
     def update_code(self, new_code):
         """Replace the reporting code with the new_code."""
 
         # Fill in the rest
+        self.code = new_code
 
 
 def make_melon_types():
@@ -51,6 +56,35 @@ def make_melon_types():
     all_melon_types = []
 
     # Fill in the rest
+    # Add muskmelon
+    muskmelon = MelonType(name='Muskmelon', code='musk', first_harvest=1998,
+                          color='green', is_seedless='seedless', 
+                          is_bestseller='Bestseller')
+    muskmelon.add_pairing('mint')
+    all_melon_types.append(muskmelon)
+
+    # Add casaba melon
+    casaba = MelonType(name='Casaba', code='cas', first_harvest=2003, 
+                       color='orange', is_seedless='has seeds', 
+                       is_bestseller='')
+    casaba.add_pairing('strawberries')
+    casaba.add_pairing('mint')
+    all_melon_types.append(casaba)
+
+    # Add crenshaw melon
+    crenshaw = MelonType(name='Crenshaw', code='cren', first_harvest=1996,
+                         color='green', is_bestseller='', 
+                         is_seedless='has seeds')
+    crenshaw.add_pairing('prosciutto')
+    all_melon_types.append(crenshaw)
+
+    # Add yellow watermelon
+    yellow_watermelon = MelonType(name='Yellow Watermelon', code='yw',
+                                  first_harvest=2013, color='yellow',
+                                  is_seedless='has seeds', 
+                                  is_bestseller='Bestseller')
+    yellow_watermelon.add_pairing('ice cream')
+    all_melon_types.append(yellow_watermelon)
 
     return all_melon_types
 
@@ -59,12 +93,31 @@ def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
 
     # Fill in the rest
+    for melon in melon_types:
+        print(f"{melon.name} pairs with")
+
+        # Loop throug the pairings printing them individually
+        for pairing in melon.pairings:
+            print(f"- {pairing}")
+            
+        print("")
+
+
+    return
+
 
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
 
     # Fill in the rest
+    melon_codes = dict()
+
+    for melon in melon_types:
+        code = melon.code
+        melon_codes[code] = melon_codes.get(code, melon)
+    
+    return melon_codes
 
 
 ############
