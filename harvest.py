@@ -162,35 +162,51 @@ def make_melons(melon_types):
     melons = []
 
     # Initialize melons and add attributes
-    melon1 = Melon('yw', 8, 7, 2, 'Sheila')
+    melon1 = Melon(melon_types['yw'], 8, 7, 2, 'Sheila')
     melons.append(melon1)
+    # print(melon1.type.code)
+    # print(melon1.is_sellable())
     
-    melon2 = Melon('yw', 3, 4, 2, 'Sheila')
+    melon2 = Melon(melon_types['yw'], 3, 4, 2, 'Sheila')
     melons.append(melon2)
 
-    melon3 = Melon('yw', 9, 8, 3, 'Sheila')
+    melon3 = Melon(melon_types['yw'], 9, 8, 3, 'Sheila')
     melons.append(melon3)
 
-    melon4 = Melon('cas', 10, 6, 35, 'Sheila')
+    melon4 = Melon(melon_types['cas'], 10, 6, 35, 'Sheila')
     melons.append(melon4)
 
-    melon5 = Melon('cren', 8, 9, 35, 'Michael')
+    melon5 = Melon(melon_types['cren'], 8, 9, 35, 'Michael')
     melons.append(melon5)
 
-    melon6 = Melon('cren', 8, 2, 35, 'Michael')
+    melon6 = Melon(melon_types['cren'], 8, 2, 35, 'Michael')
     melons.append(melon6)
 
-    melon7 = Melon('cren', 2, 3, 4, 'Michael')
+    melon7 = Melon(melon_types['cren'], 2, 3, 4, 'Michael')
     melons.append(melon7)
 
-    melon8 = Melon('musk', 6, 7, 4, 'Michael')
+    melon8 = Melon(melon_types['musk'], 6, 7, 4, 'Michael')
     melons.append(melon8)
 
-    melon9 = Melon('yw', 7, 10, 3, 'Sheila')
+    melon9 = Melon(melon_types['yw'], 7, 10, 3, 'Sheila')
     melons.append(melon9)
+
+    return melons
 
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
 
     # Fill in the rest
+    sellable = ""
+    
+
+
+    for melon in melons:
+        if melon.is_sellable:
+            sellable = "(CAN BE SOLD)" 
+        else:
+            sellable = "(NOT SELLABLE)"
+
+        print(f"Harvested by {melon.harvest_by} from Field "
+              f"{melon.harvest_field} {sellable}")
