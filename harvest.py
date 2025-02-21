@@ -130,12 +130,64 @@ class Melon:
 
     # Fill in the rest
     # Needs __init__ and is_sellable methods
+    def __init__(
+            self, type, shape_rating, color_rating, harvest_field, harvest_by
+    ):
+        """Initialize a melon harvest"""
+        
+        # Add attributes
+        self.type = type
+        self.shape_rating = shape_rating
+        self.color_rating = color_rating
+        self.harvest_field = harvest_field
+        self.harvest_by = harvest_by
+
+    def is_sellable(self):
+        """Return a boolean of whether or not a melon is sellable"""
+
+        # Check if melon ratings are above five and it's not from field three
+        if (self.shape_rating > 5 and self.color_rating > 5
+            and self.harvest_field != 3):
+
+            return True
+        else:
+            return False
+
 
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
 
     # Fill in the rest
+    melons = []
+
+    # Initialize melons and add attributes
+    melon1 = Melon('yw', 8, 7, 2, 'Sheila')
+    melons.append(melon1)
+    
+    melon2 = Melon('yw', 3, 4, 2, 'Sheila')
+    melons.append(melon2)
+
+    melon3 = Melon('yw', 9, 8, 3, 'Sheila')
+    melons.append(melon3)
+
+    melon4 = Melon('cas', 10, 6, 35, 'Sheila')
+    melons.append(melon4)
+
+    melon5 = Melon('cren', 8, 9, 35, 'Michael')
+    melons.append(melon5)
+
+    melon6 = Melon('cren', 8, 2, 35, 'Michael')
+    melons.append(melon6)
+
+    melon7 = Melon('cren', 2, 3, 4, 'Michael')
+    melons.append(melon7)
+
+    melon8 = Melon('musk', 6, 7, 4, 'Michael')
+    melons.append(melon8)
+
+    melon9 = Melon('yw', 7, 10, 3, 'Sheila')
+    melons.append(melon9)
 
 
 def get_sellability_report(melons):
